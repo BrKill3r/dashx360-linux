@@ -1,0 +1,71 @@
+<UserControl x:Class="XboxMetroLauncher.Views.Tabs.AppsTabView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:tabs="clr-namespace:XboxMetroLauncher.Views.Tabs;assembly=DashX360">
+  <Grid Background="#00FFFFFF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Canvas Name="DashboardCanvas" Width="1280" Height="502" ClipToBounds="False" HorizontalAlignment="Left" VerticalAlignment="Top">
+      <StackPanel Canvas.Left="-44" Canvas.Top="74" Opacity="0.72" Visibility="Collapsed">
+        <Button Width="72" Height="73" Style="{StaticResource X360TileButtonStyle}">
+          <Grid Background="#FFD73535">
+            <TextBlock Text="Netflix" Foreground="#FFFFFFFF" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" />
+          </Grid>
+        </Button>
+      </StackPanel>
+      <Canvas Name="HomeAlignedFrame" Left="236" Top="76" Width="806" Height="298" ClipToBounds="False">
+        <Canvas Name="ContentTileLayer" Left="0" Top="0" Width="806" Height="298">
+          <Button Canvas.Left="0" Canvas.Top="0" Width="148" Height="148" Style="{StaticResource X360TileButtonStyle}" Command="{Binding Shell.OpenMyAppsCommand}" CommandParameter="apps.myapps">
+            <Grid Background="{Binding Shell.DashboardTileBrush}">
+              <Image Stretch="Uniform" Width="72" Height="72" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-18,0,0" Source="{Binding Source=Assets/Misc/myapps.png, Converter={StaticResource CropImageSourceConverter}, ConverterParameter=535;295;455;330}" />
+              <TextBlock Foreground="#FFFFFFFF" FontSize="22" Margin="12,0,0,12" VerticalAlignment="Bottom" Text="{Binding Shell.Settings, Converter={StaticResource DashboardTileTitleConverter}, ConverterParameter=apps.myapps|My Apps}" />
+            </Grid>
+          </Button>
+          <Button Canvas.Left="0" Canvas.Top="150" Width="148" Height="148" Style="{StaticResource X360TileButtonStyle}" Command="{Binding Shell.LaunchDashboardTileCommand}" CommandParameter="apps.browse">
+            <Grid Background="{Binding Shell.DashboardTileBrush}">
+              <Image Width="58" Height="58" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,26,0,0" Source="{Binding Source=Assets/Tiles/Marketplace/apps_marketplace.png, Converter={StaticResource StringToImageSourceConverter}, ConverterParameter=128}" />
+              <TextBlock Foreground="#FFFFFFFF" FontSize="22" Margin="12,0,0,12" VerticalAlignment="Bottom" TextWrapping="Wrap" Text="{Binding Shell.Settings, Converter={StaticResource DashboardTileTitleConverter}, ConverterParameter=apps.browse|Browse Apps}" />
+            </Grid>
+          </Button>
+          <Button Canvas.Left="150" Canvas.Top="0" Width="306" Height="298" Style="{StaticResource X360TileButtonStyle}" Command="{Binding Shell.LaunchDashboardTileCommand}" CommandParameter="apps.hbogo">
+            <Grid Background="#FF000000" ClipToBounds="True">
+              <Image Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding Shell.Settings, Converter={StaticResource DashboardTileImageSourceConverter}, ConverterParameter=apps.hbogo|Assets/Tiles/hbogoapps.jpg|512}" />
+              <Rectangle Fill="#33000000" />
+              <TextBlock Text="Watch with Xbox LIVE Gold" Foreground="#CCFFFFFF" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,24" />
+            </Grid>
+          </Button>
+          <Button Canvas.Left="458" Canvas.Top="0" Width="158" Height="148" Style="{StaticResource X360TileButtonStyle}" Command="{Binding Shell.LaunchDashboardTileCommand}" CommandParameter="apps.netflix">
+            <Grid Background="#FFE3262E" ClipToBounds="True">
+              <Image Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding Shell.Settings, Converter={StaticResource DashboardTileImageSourceConverter}, ConverterParameter=apps.netflix|Assets/Tiles/netflixapps.png|256}" />
+              <TextBlock Text="instant queue" Foreground="#CCFFFFFF" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,12" />
+            </Grid>
+          </Button>
+          <Button Canvas.Left="618" Canvas.Top="0" Width="188" Height="148" Style="{StaticResource X360TileButtonStyle}" Command="{Binding Shell.LaunchDashboardTileCommand}" CommandParameter="apps.youtube">
+            <Grid Background="#FF111111" ClipToBounds="True">
+              <Image Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding Shell.Settings, Converter={StaticResource DashboardTileImageSourceConverter}, ConverterParameter=apps.youtube|Assets/Tiles/youtubeapps.jpg|320}" />
+            </Grid>
+          </Button>
+          <Button Canvas.Left="458" Canvas.Top="150" Width="158" Height="148" Style="{StaticResource X360TileButtonStyle}" Command="{Binding Shell.LaunchDashboardTileCommand}" CommandParameter="apps.hulu">
+            <Grid Background="#FFF4F4F4">
+              <TextBlock Foreground="#FF58B22E" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-12,0,0" TextWrapping="Wrap" Text="{Binding Shell.Settings, Converter={StaticResource DashboardTileTitleConverter}, ConverterParameter=apps.hulu|Hulu Plus}" />
+              <TextBlock Text="Plus" Foreground="#FF2E2E2E" FontSize="21" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,32,0,0" />
+            </Grid>
+          </Button>
+          <Button Canvas.Left="618" Canvas.Top="150" Width="188" Height="148" Style="{StaticResource X360TileButtonStyle}" Command="{Binding Shell.LaunchDashboardTileCommand}" CommandParameter="apps.espn">
+            <Grid Background="#FFFFFFFF">
+              <TextBlock Foreground="#FFE03535" FontSize="39" FontStyle="Italic" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Shell.Settings, Converter={StaticResource DashboardTileTitleConverter}, ConverterParameter=apps.espn|ESPN}" />
+              <TextBlock Text="LIVE SPORTS" Foreground="#FF9B1515" FontSize="11" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,12" />
+            </Grid>
+          </Button>
+        </Canvas>
+      </Canvas>
+      <StackPanel Canvas.Left="1210" Canvas.Top="74" Opacity="0.72" Visibility="Collapsed">
+        <Button Width="151" Height="75" Style="{StaticResource X360TileButtonStyle}">
+          <Grid Background="{Binding Shell.DashboardTileBrush}">
+            <TextBlock Text="Profile" Foreground="#FFFFFFFF" FontSize="16" Margin="8,0,0,8" VerticalAlignment="Bottom" />
+          </Grid>
+        </Button>
+        <Button Width="151" Height="75" Margin="0,2,0,0" Style="{StaticResource X360TileButtonStyle}">
+          <Grid Background="{Binding Shell.DashboardTileBrush}">
+            <TextBlock Text="Settings" Foreground="#FFFFFFFF" FontSize="16" Margin="8,0,0,8" VerticalAlignment="Bottom" />
+          </Grid>
+        </Button>
+      </StackPanel>
+    </Canvas>
+  </Grid>
+</UserControl>

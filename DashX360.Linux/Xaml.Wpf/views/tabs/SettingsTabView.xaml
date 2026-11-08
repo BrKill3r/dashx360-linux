@@ -1,0 +1,69 @@
+<UserControl x:Class="XboxMetroLauncher.Views.Tabs.SettingsTabView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Grid Background="#00FFFFFF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Canvas Name="DashboardCanvas" Width="1280" Height="502" ClipToBounds="False" HorizontalAlignment="Left" VerticalAlignment="Top">
+      <StackPanel Canvas.Left="-16" Canvas.Top="62" Opacity="0.42" Visibility="Collapsed">
+        <Button Width="160" Height="142" Style="{StaticResource X360TileButtonStyle}">
+          <Grid Background="#FF1E1E1E" />
+        </Button>
+      </StackPanel>
+      <Canvas Name="HomeAlignedFrame" Canvas.Left="224" Canvas.Top="31" Width="834" Height="398" ClipToBounds="False">
+        <Canvas Name="ContentTileLayer" Canvas.Left="0" Canvas.Top="0" Width="834" Height="398">
+          <UniformGrid Canvas.Left="0" Canvas.Top="0" Width="391.55" Height="186.85" Columns="4" Rows="2" RenderTransformOrigin="0,0">
+            <UIElement.RenderTransform>
+              <ScaleTransform ScaleX="2.08" ScaleY="2.08" />
+            </UIElement.RenderTransform>
+            <Button Style="{StaticResource X360TileButtonStyle}" Command="{Binding Shell.OpenLauncherSettingsCommand}">
+              <Grid Background="{Binding Shell.DashboardTileBrush}">
+                <Image Width="39" Height="39" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-9,0,0" Source="{Binding Source=Assets/Misc/SettingsIcons/system.png, Converter={StaticResource StringToImageSourceConverter}, ConverterParameter=96}" />
+                <TextBlock Text="System" Foreground="#FFFFFFFF" FontSize="10" Margin="5,0,0,5" VerticalAlignment="Bottom" />
+              </Grid>
+            </Button>
+            <Button Style="{StaticResource X360TileButtonStyle}" Command="{Binding Shell.OpenLauncherSettingsCommand}">
+              <Grid Background="{Binding Shell.DashboardTileBrush}">
+                <Image Width="39" Height="39" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-9,0,0" Source="{Binding Source=Assets/Misc/SettingsIcons/preferences.png, Converter={StaticResource StringToImageSourceConverter}, ConverterParameter=96}" />
+                <TextBlock Text="Preferences" Foreground="#FFFFFFFF" FontSize="9" Margin="4,0,0,5" VerticalAlignment="Bottom" />
+              </Grid>
+            </Button>
+            <Button Style="{StaticResource X360TileButtonStyle}" Command="{Binding Shell.OpenProfileEditorCommand}">
+              <Grid Background="{Binding Shell.DashboardTileBrush}">
+                <Image Width="39" Height="39" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-9,0,0" Source="{Binding Source=Assets/Misc/SettingsIcons/account.png, Converter={StaticResource StringToImageSourceConverter}, ConverterParameter=96}" />
+                <TextBlock Text="Profile" Foreground="#FFFFFFFF" FontSize="10" Margin="5,0,0,5" VerticalAlignment="Bottom" />
+              </Grid>
+            </Button>
+            <Button Style="{StaticResource X360TileButtonStyle}" Command="{Binding Shell.OpenLauncherSettingsCommand}">
+              <Grid Background="{Binding Shell.DashboardTileBrush}">
+                <Image Width="41" Height="41" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-9,0,0" Source="{Binding Source=Assets/Misc/SettingsIcons/kinect.png, Converter={StaticResource StringToImageSourceConverter}, ConverterParameter=96}" />
+                <TextBlock Text="Kinect" Foreground="#FFFFFFFF" FontSize="10" Margin="5,0,0,5" VerticalAlignment="Bottom" />
+              </Grid>
+            </Button>
+            <Button Style="{StaticResource X360TileButtonStyle}" Opacity="0.42" Command="{Binding Shell.OpenLauncherSettingsCommand}">
+              <Grid Background="{Binding Shell.DashboardTileBrush}">
+                <Image Width="39" Height="39" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-9,0,0" Source="{Binding Source=Assets/Misc/SettingsIcons/account.png, Converter={StaticResource StringToImageSourceConverter}, ConverterParameter=96}" />
+                <TextBlock Text="Account" Foreground="#FFFFFFFF" FontSize="10" Margin="5,0,0,5" VerticalAlignment="Bottom" />
+              </Grid>
+            </Button>
+            <Button Style="{StaticResource X360TileButtonStyle}" Opacity="0.42" Command="{Binding Shell.OpenLauncherSettingsCommand}">
+              <Grid Background="{Binding Shell.DashboardTileBrush}">
+                <Image Width="39" Height="39" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-9,0,0" Source="{Binding Source=Assets/Misc/SettingsIcons/privacy.png, Converter={StaticResource StringToImageSourceConverter}, ConverterParameter=96}" />
+                <TextBlock Text="Privacy" Foreground="#FFFFFFFF" FontSize="10" Margin="5,0,0,5" VerticalAlignment="Bottom" />
+              </Grid>
+            </Button>
+            <Button Style="{StaticResource X360TileButtonStyle}" Command="{Binding Shell.OpenLauncherSettingsCommand}">
+              <Grid Background="{Binding Shell.DashboardTileBrush}">
+                <Image Width="39" Height="39" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-9,0,0" Source="{Binding Source=Assets/Misc/SettingsIcons/family.png, Converter={StaticResource StringToImageSourceConverter}, ConverterParameter=96}" />
+                <TextBlock Text="Family" Foreground="#FFFFFFFF" FontSize="10" Margin="5,0,0,5" VerticalAlignment="Bottom" />
+              </Grid>
+            </Button>
+            <Button Style="{StaticResource X360TileButtonStyle}" Command="{Binding Shell.ShutdownCommand}">
+              <Grid Background="{Binding Shell.DashboardTileBrush}">
+                <Image Width="40" Height="40" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-9,0,0" Source="{Binding Source=Assets/Misc/SettingsIcons/turnoff.png, Converter={StaticResource StringToImageSourceConverter}, ConverterParameter=96}" />
+                <TextBlock Text="Turn Off" Foreground="#FFFFFFFF" FontSize="10" Margin="5,0,0,5" VerticalAlignment="Bottom" />
+              </Grid>
+            </Button>
+          </UniformGrid>
+          <TextBlock Canvas.Left="0" Canvas.Top="398" Width="650" Foreground="#88FFFFFF" FontSize="12" TextWrapping="Wrap" Text="Unofficial non-commercial fan project. Xbox and related names, logos, and imagery are property of Microsoft. Not affiliated with or endorsed by Microsoft." />
+        </Canvas>
+      </Canvas>
+    </Canvas>
+  </Grid>
+</UserControl>

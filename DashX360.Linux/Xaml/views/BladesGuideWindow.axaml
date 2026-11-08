@@ -1,0 +1,92 @@
+<Window xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="using:XboxMetroLauncher.Controls" x:Class="XboxMetroLauncher.Views.BladesGuideWindow" Background="Transparent" ShowInTaskbar="False" Topmost="True" Title="Xbox Guide" FontFamily="Convection, avares://DashX360/Fonts#Selawik" FontSize="23" xmlns:w="using:XboxMetroLauncher.Compat" SystemDecorations="None" TransparencyLevelHint="Transparent">
+ <Window.Resources>
+  <ControlTheme x:Key="GuideRow" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}"><Setter Property="VerticalAlignment" Value="Stretch"/><Setter Property="HorizontalAlignment" Value="Stretch"/>
+   <Setter Property="Foreground" Value="#FF2C2C20"/><Setter Property="Background" Value="#08FFFFFF"/>
+   <Setter Property="BorderBrush" Value="#40837628"/><Setter Property="BorderThickness" Value="0,0,0,1"/>
+   <Setter Property="Height" Value="42"/><Setter Property="Padding" Value="8,0"/>
+   <Setter Property="HorizontalContentAlignment" Value="Left"/>
+   <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
+    <Border x:Name="Plate" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2"><w:WpfTriggers.TemplateTriggers><w:TriggerCollection><w:Trigger Property="IsKeyboardFocusWithin" Value="True"><w:Setter TargetName="Plate" Property="Background"><w:Setter.Value><LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%"><GradientStop Color="#FFF7F8CE" Offset="0"/><GradientStop Color="#B5FFFFD7" Offset="0.45"/><GradientStop Color="#00FFFFFF" Offset="1"/></LinearGradientBrush></w:Setter.Value></w:Setter><w:Setter TargetName="Plate" Property="BorderBrush" Value="#FFBBED6C"/></w:Trigger><w:Trigger Property="IsMouseOver" Value="True"><w:Setter TargetName="Plate" Property="Background" Value="#90FFFFDE"/></w:Trigger><w:Trigger Property="IsPressed" Value="True"><w:Setter TargetName="Plate" Property="Background" Value="#B0C4E680"/></w:Trigger><w:Trigger Property="IsEnabled" Value="False"><w:Setter Property="Opacity" Value="0.4"/></w:Trigger></w:TriggerCollection></w:WpfTriggers.TemplateTriggers>
+     <ContentPresenter Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Foreground="{TemplateBinding Foreground}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" FontFamily="{TemplateBinding FontFamily}"/>
+    </Border>
+    
+   </ControlTemplate></Setter.Value></Setter>
+  </ControlTheme>
+  <ControlTheme x:Key="GuideTool" TargetType="Button" BasedOn="{StaticResource GuideRow}"><Setter Property="VerticalAlignment" Value="Stretch"/><Setter Property="HorizontalAlignment" Value="Stretch"/>
+   <Setter Property="BorderThickness" Value="1"/><Setter Property="BorderBrush" Value="#908F842F"/>
+   <Setter Property="Background"><Setter.Value><LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%"><GradientStop Color="#70FFFFE8" Offset="0"/><GradientStop Color="#12FFFFE8" Offset="0.55"/><GradientStop Color="#409D8823" Offset="1"/></LinearGradientBrush></Setter.Value></Setter>
+   <Setter Property="HorizontalContentAlignment" Value="Center"/><Setter Property="Height" Value="34"/>
+   <Setter Property="FontSize" Value="21"/><Setter Property="Padding" Value="1"/>
+  </ControlTheme>
+ </Window.Resources>
+ <Grid x:Name="GuideRoot" Focusable="True">
+  <Border x:Name="Dimmer" Background="#B8000000" Opacity="0"/>
+  <Viewbox Stretch="Uniform" HorizontalAlignment="Left">
+   <Canvas Width="1280" Height="720" ClipToBounds="True">
+    <Grid x:Name="Shell" Width="560" Height="720" RenderTransformOrigin="0%,0%">
+     <Grid.RenderTransform><TranslateTransform X="-560"/></Grid.RenderTransform>
+     <controls:BladesGuideChrome/>
+     <TextBlock x:Name="PageTitle" Text="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="102,63,0,0" FontSize="24" Foreground="#FFF4F5D9"/>
+     <TextBlock Text="{Binding ClockText}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,65,87,0" FontSize="21" Foreground="#FFF4F5D9"/>
+     <LayoutTransformControl HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,249,27,0"><LayoutTransformControl.LayoutTransform><RotateTransform Angle="90"/></LayoutTransformControl.LayoutTransform><TextBlock Text="{Binding Gamertag}" Width="245" TextTrimming="CharacterEllipsis" FontSize="23">
+      
+     </TextBlock></LayoutTransformControl>
+     <Canvas x:Name="Home" Width="560" Height="720" HorizontalAlignment="Left">
+      <Border Canvas.Left="102" Canvas.Top="109" Width="371" Height="82" BorderThickness="1.5" BorderBrush="#8097884D" CornerRadius="3" Background="#18FFFFFF">
+       <Grid Margin="7"><Grid.ColumnDefinitions><ColumnDefinition Width="68"/><ColumnDefinition/><ColumnDefinition Width="100"/></Grid.ColumnDefinitions>
+        <Border Width="62" Height="62" BorderThickness="1.5" BorderBrush="#8097884D" Background="#18FFFFFF"><Image Source="{Binding GamerPicturePath, Converter={StaticResource StringToImageSourceConverter}}" Stretch="UniformToFill"/></Border>
+        <StackPanel Grid.Column="1"><TextBlock Text="Gamerscore" FontSize="22"/><TextBlock Text="Status" FontSize="22"/></StackPanel>
+        <StackPanel Grid.Column="2"><TextBlock Text="{Binding Dashboard.Profile.Gamerscore}" TextAlignment="Right" FontSize="22"/><TextBlock Text="{Binding Dashboard.Profile.OnlineStatus}" TextAlignment="Right" FontSize="22" TextTrimming="CharacterEllipsis"/></StackPanel>
+       </Grid>
+      </Border>
+      <Border Canvas.Left="102" Canvas.Top="201" Width="371" Height="80" BorderBrush="#70958643" BorderThickness="1" CornerRadius="3">
+       <StackPanel Margin="5,0"><TextBlock x:Name="CommunityTitle" Text="Community" FontSize="22"/>
+        <UniformGrid Columns="3" Margin="0,0,0,4">
+         <Button Margin="1" Click="MessagesClick" Theme="{StaticResource GuideTool}" ToolTip.Tip="Messages"><StackPanel Orientation="Horizontal"><TextBlock Text="✉" FontFamily="avares://DashX360/Fonts#Noto Sans Symbols 2, DejaVu Sans, avares://DashX360/Fonts#Selawik" Margin="0,0,22,0"/><TextBlock Text="{Binding FriendsMessageCountText}"/></StackPanel></Button>
+         <Button Margin="1" Click="FriendsClick" Theme="{StaticResource GuideTool}" ToolTip.Tip="Friends"><StackPanel Orientation="Horizontal"><TextBlock Text="🗪" FontFamily="avares://DashX360/Fonts#Noto Sans Symbols 2, DejaVu Sans, avares://DashX360/Fonts#Selawik" Margin="0,0,22,0"/><TextBlock Text="{Binding FriendsTotalCountText}"/></StackPanel></Button>
+         <Button Margin="1" Theme="{StaticResource GuideTool}" ToolTip.Tip="Recent Players"><StackPanel Orientation="Horizontal"><TextBlock Text="🎮" FontFamily="avares://DashX360/Fonts#Noto Sans Symbols 2, DejaVu Sans, avares://DashX360/Fonts#Selawik" Margin="0,0,22,0"/><TextBlock Text="0"/></StackPanel></Button>
+        </UniformGrid>
+       </StackPanel>
+      </Border>
+      <Button Canvas.Left="102" Canvas.Top="286" Width="371" Content="Private Chat" Theme="{StaticResource GuideRow}"/>
+      <Button Canvas.Left="102" Canvas.Top="328" Width="371" Content="Personal Settings" Click="PersonalSettingsClick" Theme="{StaticResource GuideRow}"/>
+      <Border Canvas.Left="102" Canvas.Top="381" Width="371" Height="92" BorderBrush="#80948846" BorderThickness="1.5" CornerRadius="4">
+       <StackPanel Margin="5">
+        <UniformGrid Columns="6">
+         <Button Command="{Binding Dashboard.PlayPauseMusicCommand}" FontFamily="avares://DashX360/Fonts#Noto Sans Symbols 2, DejaVu Sans, avares://DashX360/Fonts#Selawik" ToolTip.Tip="Play / Pause"><Button.Theme><ControlTheme TargetType="Button" BasedOn="{StaticResource GuideTool}"><Setter Property="VerticalAlignment" Value="Stretch"/><Setter Property="HorizontalAlignment" Value="Stretch"/><Setter Property="Content" Value="▶"/><Setter Property="w:WpfTriggers.ThemeTriggers3"><Template><w:TriggerCollection><w:DataTrigger Binding="{Binding Dashboard.IsMusicPlaying}" Value="True"><w:Setter Property="Content" Value=""/></w:DataTrigger></w:TriggerCollection></Template></Setter></ControlTheme></Button.Theme></Button>
+         <Button Command="{Binding Dashboard.PreviousMusicCommand}" FontFamily="avares://DashX360/Fonts#Noto Sans Symbols 2, DejaVu Sans, avares://DashX360/Fonts#Selawik" Content="⏮" Theme="{StaticResource GuideTool}" ToolTip.Tip="Previous"/>
+         <Button Command="{Binding Dashboard.StopMusicCommand}" FontFamily="avares://DashX360/Fonts#Noto Sans Symbols 2, DejaVu Sans, avares://DashX360/Fonts#Selawik" Content="⏹" Theme="{StaticResource GuideTool}" ToolTip.Tip="Stop"/>
+         <Button Command="{Binding Dashboard.NextMusicCommand}" FontFamily="avares://DashX360/Fonts#Noto Sans Symbols 2, DejaVu Sans, avares://DashX360/Fonts#Selawik" Content="⏭" Theme="{StaticResource GuideTool}" ToolTip.Tip="Next"/>
+         <Button Command="{Binding Dashboard.ToggleShuffleMusicCommand}" FontFamily="avares://DashX360/Fonts#Noto Sans Symbols 2, DejaVu Sans, avares://DashX360/Fonts#Selawik" Content="⇆" Theme="{StaticResource GuideTool}" ToolTip.Tip="Shuffle"/>
+         <Button Click="VolumeClick" FontFamily="avares://DashX360/Fonts#Noto Sans Symbols 2, DejaVu Sans, avares://DashX360/Fonts#Selawik" Content="🔊" Theme="{StaticResource GuideTool}" ToolTip.Tip="Volume"/>
+        </UniformGrid>
+        <Button x:Name="SelectMusic" Content="{Binding GuideMediaPlaybackLabel}" Height="36" Click="MusicClick" Theme="{StaticResource GuideRow}"/>
+       </StackPanel>
+      </Border>
+      <Button Canvas.Left="102" Canvas.Top="484" Width="371" Height="77" Background="#FFEEF2DD" Click="DashboardClick" Theme="{StaticResource GuideTool}">
+       <Border Width="346" Height="62">
+        <Border.Background>
+         <ImageBrush Stretch="Uniform" Source="{Binding Source=Assets/Misc/Xbox_360-Logo.wine.png, Converter={StaticResource StringToImageSourceConverter}}"/>
+        </Border.Background>
+       </Border>
+      </Button>
+      <Slider x:Name="Volume" Canvas.Left="102" Canvas.Top="381" Width="310" Height="35" Minimum="0" Maximum="1" Value="{Binding Dashboard.MusicVolume, Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" w:Wpf.Visibility="Collapsed" ToolTip.Tip="Volume"/>
+     </Canvas>
+     <Canvas x:Name="Page" Width="924" Height="720" HorizontalAlignment="Left" w:Wpf.Visibility="Collapsed">
+      <ScrollViewer Canvas.Left="102" Canvas.Top="111" Width="366" Height="446" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"><StackPanel x:Name="PageMenu"/></ScrollViewer>
+      <Border Canvas.Left="482" Canvas.Top="111" Width="342" Height="446" Background="#186E620F" CornerRadius="3">
+       <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"><StackPanel x:Name="PageDetails" Margin="8"/></ScrollViewer>
+      </Border>
+     </Canvas>
+     <Grid x:Name="Footer" Margin="102,582,86,0" VerticalAlignment="Top" Height="65">
+      <StackPanel HorizontalAlignment="Left">
+       <StackPanel x:Name="DashboardPrompt" Orientation="Horizontal" Cursor="Hand" PointerReleased="MinimizeDashboardHint_OnMouseLeftButtonUp"><controls:BladePadGlyph Letter="Y" Width="23" Height="23"/><TextBlock Text="Minimize Dashboard" FontSize="18" Foreground="White" Margin="3,0,0,0"/></StackPanel>
+       <StackPanel x:Name="SignOutPrompt" Orientation="Horizontal" Cursor="Hand" PointerReleased="CloseGameHint_OnMouseLeftButtonUp"><controls:BladePadGlyph Letter="X" Width="23" Height="23"/><TextBlock Text="{Binding Dashboard.RunningGameFooterActionText}" FontSize="18" Foreground="White" Margin="3,0,0,0"/></StackPanel>
+      </StackPanel>
+      <StackPanel HorizontalAlignment="Right"><StackPanel Orientation="Horizontal" HorizontalAlignment="Right"><TextBlock Text="Back" FontSize="21" Foreground="White" Margin="0,0,3,0"/><controls:BladePadGlyph Letter="B" Width="23" Height="23"/></StackPanel><StackPanel Orientation="Horizontal" HorizontalAlignment="Right"><TextBlock Text="Select" FontSize="21" Foreground="White" Margin="0,0,3,0"/><controls:BladePadGlyph Letter="A" Width="23" Height="23"/></StackPanel></StackPanel>
+     </Grid>
+    </Grid>
+   </Canvas>
+  </Viewbox>
+ </Grid>
+</Window>

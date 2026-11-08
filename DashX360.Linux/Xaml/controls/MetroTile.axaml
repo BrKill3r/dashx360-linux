@@ -1,0 +1,94 @@
+<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="using:XboxMetroLauncher.Controls" x:Class="XboxMetroLauncher.Controls.MetroTile" x:Name="Root" Focusable="False" ClipToBounds="False" Width="{Binding TileWidth, ElementName=Root}" Height="{Binding TileHeight, ElementName=Root}" xmlns:w="using:XboxMetroLauncher.Compat">
+  <Button Name="TileButton" Focusable="True" ClipToBounds="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" BorderThickness="1" BorderBrush="{StaticResource MetroTileBorderBrush}" controls:TileSelectionChrome.IsEnabled="True" Command="{Binding Command, ElementName=Root}" CommandParameter="{Binding CommandParameter, ElementName=Root}" Background="{Binding TileBrush, ElementName=Root}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ZIndex="0" GotFocus="TileButton_OnGotKeyboardFocus">
+    <Button.Template>
+      <ControlTemplate TargetType="Button">
+        <Grid Name="TileRoot" RenderTransformOrigin="50%,50%" ClipToBounds="False"><w:WpfTriggers.TemplateTriggers><w:TriggerCollection><w:DataTrigger Value="True" Binding="{Binding Path=(controls:TileSelectionChrome.IsActive), RelativeSource={RelativeSource Self}}">
+            <w:DataTrigger.EnterActions>
+              <w:BeginStoryboard>
+                <w:Storyboard>
+                  <w:DoubleAnimation To="0" Duration="0:0:0.13" TargetName="FocusChrome" TargetProperty="Opacity">
+                    <w:DoubleAnimation.EasingFunction>
+                      <w:SineEase EasingMode="EaseOut"/>
+                    </w:DoubleAnimation.EasingFunction>
+                  </w:DoubleAnimation>
+                  <w:DoubleAnimation To="1.07" Duration="0:0:0.16" TargetName="TileRoot" TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                    <w:DoubleAnimation.EasingFunction>
+                      <w:CubicEase EasingMode="EaseOut"/>
+                    </w:DoubleAnimation.EasingFunction>
+                  </w:DoubleAnimation>
+                  <w:DoubleAnimation To="1.07" Duration="0:0:0.16" TargetName="TileRoot" TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                    <w:DoubleAnimation.EasingFunction>
+                      <w:CubicEase EasingMode="EaseOut"/>
+                    </w:DoubleAnimation.EasingFunction>
+                  </w:DoubleAnimation>
+                </w:Storyboard>
+              </w:BeginStoryboard>
+            </w:DataTrigger.EnterActions>
+            <w:DataTrigger.ExitActions>
+              <w:BeginStoryboard>
+                <w:Storyboard>
+                  <w:DoubleAnimation To="0" Duration="0:0:0.10" TargetName="FocusChrome" TargetProperty="Opacity">
+                    <w:DoubleAnimation.EasingFunction>
+                      <w:SineEase EasingMode="EaseIn"/>
+                    </w:DoubleAnimation.EasingFunction>
+                  </w:DoubleAnimation>
+                  <w:DoubleAnimation To="1" Duration="0:0:0.12" TargetName="TileRoot" TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                    <w:DoubleAnimation.EasingFunction>
+                      <w:SineEase EasingMode="EaseOut"/>
+                    </w:DoubleAnimation.EasingFunction>
+                  </w:DoubleAnimation>
+                  <w:DoubleAnimation To="1" Duration="0:0:0.12" TargetName="TileRoot" TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                    <w:DoubleAnimation.EasingFunction>
+                      <w:SineEase EasingMode="EaseOut"/>
+                    </w:DoubleAnimation.EasingFunction>
+                  </w:DoubleAnimation>
+                </w:Storyboard>
+              </w:BeginStoryboard>
+            </w:DataTrigger.ExitActions>
+            <w:Setter TargetName="TileRoot" Property="UIElement.Effect">
+              <w:Setter.Value>
+                <DropShadowEffect BlurRadius="18" Color="#CC000000" Opacity="0.42" OffsetX="6.364" OffsetY="6.364"/>
+              </w:Setter.Value>
+            </w:Setter>
+            <w:Setter Property="Panel.ZIndex" Value="100"/>
+          </w:DataTrigger><w:Trigger Property="ButtonBase.IsPressed" Value="True">
+            <w:Setter TargetName="Outer" Property="UIElement.Opacity" Value="0.82"/>
+          </w:Trigger><w:Trigger Property="UIElement.IsEnabled" Value="False">
+            <w:Setter TargetName="Outer" Property="UIElement.Opacity" Value="0.45"/>
+          </w:Trigger></w:TriggerCollection></w:WpfTriggers.TemplateTriggers>
+          <Grid.RenderTransform>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+          </Grid.RenderTransform>
+          <Border Name="Outer" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2" ClipToBounds="True">
+            <Grid>
+              <Rectangle Fill="{StaticResource GlassPanelBrush}"/>
+              <Image Stretch="UniformToFill" Opacity="0.9" Source="{Binding ImagePath, ElementName=Root, Converter={StaticResource StringToImageSourceConverter}}"/>
+              <Rectangle VerticalAlignment="Bottom" Height="80">
+                <Rectangle.Fill>
+                  <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                    <GradientStop Color="#00000000" Offset="0"/>
+                    <GradientStop Color="#B8000000" Offset="1"/>
+                  </LinearGradientBrush>
+                </Rectangle.Fill>
+              </Rectangle>
+              <StackPanel VerticalAlignment="Bottom" Margin="14,0,14,12">
+                <TextBlock Foreground="#FFFFFFFF" FontSize="22" FontWeight="Light" TextTrimming="CharacterEllipsis" Text="{Binding Title, ElementName=Root}"/>
+                <TextBlock Foreground="#DDEEEEEE" FontSize="13" TextTrimming="CharacterEllipsis" Text="{Binding Subtitle, ElementName=Root}" w:Wpf.Visibility="{Binding Subtitle, ElementName=Root, Converter={StaticResource EmptyToVisibilityConverter}}"/>
+              </StackPanel>
+              <Border Name="FocusChrome" BorderBrush="#FFFFFFFF" BorderThickness="2" Opacity="0" CornerRadius="2"/>
+              <Rectangle VerticalAlignment="Top" Height="42" Opacity="0.28">
+                <Rectangle.Fill>
+                  <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                    <GradientStop Color="#FFFFFFFF" Offset="0"/>
+                    <GradientStop Color="#00FFFFFF" Offset="1"/>
+                  </LinearGradientBrush>
+                </Rectangle.Fill>
+              </Rectangle>
+            </Grid>
+          </Border>
+        </Grid>
+        
+      </ControlTemplate>
+    </Button.Template>
+  </Button>
+</UserControl>

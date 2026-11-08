@@ -37,3 +37,7 @@ appsettings.Local.json
 appsettings.Development.json
 *.secrets.json
 steam-web-config.json
+
+# Linux port build output
+/dist/
+/release/

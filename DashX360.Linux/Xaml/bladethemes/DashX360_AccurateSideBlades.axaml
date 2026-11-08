@@ -1,0 +1,98 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:w="using:XboxMetroLauncher.Compat">
+  <ControlTheme x:Key="SideBladeArtwork" TargetType="Image">
+    <Setter Property="Width" Value="1920"/>
+    <Setter Property="Height" Value="1080"/>
+    <Setter Property="Stretch" Value="Uniform"/>
+    <Setter Property="IsHitTestVisible" Value="False"/>
+    
+  </ControlTheme>
+
+  <ControlTheme x:Key="StateBladeLabel" TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="Convection, Xbox 360, avares://DashX360/Fonts#Selawik"/>
+    <Setter Property="FontSize" Value="38"/>
+    <Setter Property="FontWeight" Value="Normal"/>
+    <Setter Property="FontStretch" Value="Normal"/>
+    <Setter Property="Foreground" Value="#D22E3335"/>
+    <Setter Property="HorizontalAlignment" Value="Center"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+    <Setter Property="TextAlignment" Value="Center"/>
+    <Setter Property="TextWrapping" Value="NoWrap"/>
+    <Setter Property="ClipToBounds" Value="False"/>
+    <Setter Property="RenderTransformOrigin" Value="50%,50%"/>
+    
+    
+    
+    
+    <Setter Property="UseLayoutRounding" Value="True"/>
+    <Setter Property="RenderTransform">
+      <Setter.Value>
+        <RotateTransform Angle="90"/>
+      </Setter.Value>
+    </Setter>
+  </ControlTheme>
+
+  <DataTemplate x:Key="MarketplaceAccurateSideBladesTemplate">
+    <Canvas Width="1920" Height="1080" ClipToBounds="False" IsHitTestVisible="False">
+      <Image Source="{Binding Source=Assets/Blades/StatePngs/marketplace-blades.png, Converter={StaticResource StringToImageSourceConverter}}" Theme="{StaticResource SideBladeArtwork}"/>
+      <Canvas Width="1920" Height="1080" ClipToBounds="False" IsHitTestVisible="False" ZIndex="10">
+        <TextBlock Text="marketplace" Width="520" Height="68" Canvas.Left="-115" Canvas.Top="286" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="xbox live" Width="400" Height="68" Canvas.Left="1315" Canvas.Top="260" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="games" Width="315" Height="68" Canvas.Left="1428" Canvas.Top="258" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="media" Width="315" Height="68" Canvas.Left="1503" Canvas.Top="258" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="system" Width="330" Height="68" Canvas.Left="1570" Canvas.Top="256" Theme="{StaticResource StateBladeLabel}"/>
+      </Canvas>
+    </Canvas>
+  </DataTemplate>
+
+  <DataTemplate x:Key="XboxLIVEAccurateSideBladesTemplate">
+    <Canvas Width="1920" Height="1080" ClipToBounds="False" IsHitTestVisible="False">
+      <Image Source="{Binding Source=Assets/Blades/StatePngs/xbox-live-blades.png, Converter={StaticResource StringToImageSourceConverter}}" Theme="{StaticResource SideBladeArtwork}"/>
+      <Canvas Width="1920" Height="1080" ClipToBounds="False" IsHitTestVisible="False" ZIndex="10">
+        <TextBlock Text="marketplace" Width="520" Height="68" Canvas.Left="-113" Canvas.Top="286" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="xbox live" Width="400" Height="68" Canvas.Left="30" Canvas.Top="246" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="games" Width="315" Height="68" Canvas.Left="1428" Canvas.Top="258" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="media" Width="315" Height="68" Canvas.Left="1503" Canvas.Top="258" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="system" Width="330" Height="68" Canvas.Left="1570" Canvas.Top="256" Theme="{StaticResource StateBladeLabel}"/>
+      </Canvas>
+    </Canvas>
+  </DataTemplate>
+
+  <DataTemplate x:Key="GamesAccurateSideBladesTemplate">
+    <Canvas Width="1920" Height="1080" ClipToBounds="False" IsHitTestVisible="False">
+      <Image Source="{Binding Source=Assets/Blades/StatePngs/games-blades.png, Converter={StaticResource StringToImageSourceConverter}}" Theme="{StaticResource SideBladeArtwork}"/>
+      <Canvas Width="1920" Height="1080" ClipToBounds="False" IsHitTestVisible="False" ZIndex="10">
+        <TextBlock Text="marketplace" Width="520" Height="68" Canvas.Left="-113" Canvas.Top="286" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="xbox live" Width="400" Height="68" Canvas.Left="32" Canvas.Top="268" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="games" Width="315" Height="68" Canvas.Left="134" Canvas.Top="246" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="media" Width="315" Height="68" Canvas.Left="1503" Canvas.Top="258" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="system" Width="330" Height="68" Canvas.Left="1570" Canvas.Top="256" Theme="{StaticResource StateBladeLabel}"/>
+      </Canvas>
+    </Canvas>
+  </DataTemplate>
+
+  <DataTemplate x:Key="MediaAccurateSideBladesTemplate">
+    <Canvas Width="1920" Height="1080" ClipToBounds="False" IsHitTestVisible="False">
+      <Image Source="{Binding Source=Assets/Blades/StatePngs/media-blades.png, Converter={StaticResource StringToImageSourceConverter}}" Theme="{StaticResource SideBladeArtwork}"/>
+      <Canvas Width="1920" Height="1080" ClipToBounds="False" IsHitTestVisible="False" ZIndex="10">
+        <TextBlock Text="marketplace" Width="520" Height="68" Canvas.Left="-113" Canvas.Top="286" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="xbox live" Width="400" Height="68" Canvas.Left="32" Canvas.Top="268" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="games" Width="315" Height="68" Canvas.Left="144" Canvas.Top="252" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="media" Width="315" Height="68" Canvas.Left="198" Canvas.Top="244" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="system" Width="330" Height="68" Canvas.Left="1570" Canvas.Top="256" Theme="{StaticResource StateBladeLabel}"/>
+      </Canvas>
+    </Canvas>
+  </DataTemplate>
+
+  <DataTemplate x:Key="SystemAccurateSideBladesTemplate">
+    <Canvas Width="1920" Height="1080" ClipToBounds="False" IsHitTestVisible="False">
+      <Image Source="{Binding Source=Assets/Blades/StatePngs/system-blades.png, Converter={StaticResource StringToImageSourceConverter}}" Theme="{StaticResource SideBladeArtwork}"/>
+      <Canvas Width="1920" Height="1080" ClipToBounds="False" IsHitTestVisible="False" ZIndex="10">
+        <TextBlock Text="marketplace" Width="520" Height="68" Canvas.Left="-113" Canvas.Top="286" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="xbox live" Width="400" Height="68" Canvas.Left="32" Canvas.Top="268" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="games" Width="315" Height="68" Canvas.Left="144" Canvas.Top="252" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="media" Width="315" Height="68" Canvas.Left="217" Canvas.Top="246" Theme="{StaticResource StateBladeLabel}"/>
+        <TextBlock Text="system" Width="330" Height="68" Canvas.Left="265" Canvas.Top="240" Theme="{StaticResource StateBladeLabel}"/>
+      </Canvas>
+    </Canvas>
+  </DataTemplate>
+</ResourceDictionary>

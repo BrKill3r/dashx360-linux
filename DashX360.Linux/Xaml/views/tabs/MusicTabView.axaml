@@ -1,0 +1,53 @@
+<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:tabs="using:XboxMetroLauncher.Views.Tabs" x:Class="XboxMetroLauncher.Views.Tabs.MusicTabView" xmlns:w="using:XboxMetroLauncher.Compat">
+  <Grid Background="#00FFFFFF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Canvas Name="DashboardCanvas" Width="1280" Height="502" ClipToBounds="False" HorizontalAlignment="Left" VerticalAlignment="Top">
+      <Button Canvas.Left="236" Canvas.Top="76" Width="148" Height="148" Command="{Binding Shell.LaunchDashboardTileCommand}" CommandParameter="music.player" Theme="{StaticResource X360TileButtonStyle}">
+        <Grid Background="{Binding Shell.DashboardTileBrush}">
+          <Image Stretch="Uniform" Width="58" Height="58" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-12,0,0" Source="{Binding Source=Assets/Misc/music.png, Converter={StaticResource CropImageSourceConverter}, ConverterParameter=250;210;460;540}"/>
+          <TextBlock Foreground="#FFFFFFFF" FontSize="22" Margin="12,0,0,12" VerticalAlignment="Bottom" Text="{Binding Shell.Settings, Converter={StaticResource DashboardTileTitleConverter}, ConverterParameter=music.player|Music Player}"/>
+        </Grid>
+      </Button>
+      <Button Canvas.Left="236" Canvas.Top="226" Width="148" Height="148" Command="{Binding Shell.LaunchDashboardTileCommand}" CommandParameter="music.marketplace" Theme="{StaticResource X360TileButtonStyle}">
+        <Grid Background="{Binding Shell.DashboardTileBrush}">
+          <Image Width="58" Height="58" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,26,0,0" Source="{Binding Source=Assets/Tiles/Marketplace/music_marketplace.png, Converter={StaticResource StringToImageSourceConverter}, ConverterParameter=128}" RenderOptions.BitmapInterpolationMode="HighQuality"/>
+          <TextBlock Foreground="#FFFFFFFF" FontSize="22" Margin="12,0,0,12" VerticalAlignment="Bottom" TextWrapping="Wrap" Text="{Binding Shell.Settings, Converter={StaticResource DashboardTileTitleConverter}, ConverterParameter=music.marketplace|Music Marketplace}"/>
+        </Grid>
+      </Button>
+      <Button Canvas.Left="386" Canvas.Top="76" Width="306" Height="298" Command="{Binding Shell.LaunchDashboardTileCommand}" CommandParameter="music.feature" Theme="{StaticResource X360TileButtonStyle}">
+        <Grid ClipToBounds="True">
+          <Grid.Background>
+            <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+              <GradientStop Color="#FF232323" Offset="0"/>
+              <GradientStop Color="#FF6E2B82" Offset="0.48"/>
+              <GradientStop Color="#FF0D0D0D" Offset="1"/>
+            </LinearGradientBrush>
+          </Grid.Background>
+          <Image Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding Shell.Settings, Converter={StaticResource DashboardTileImageSourceConverter}, ConverterParameter=music.feature|Assets/Tiles/overexposedmusic.jpg|512}"/>
+          <Rectangle Fill="#33000000"/>
+          <Rectangle Height="56" VerticalAlignment="Bottom" Fill="#A0000000"/>
+          <TextBlock Foreground="#FFFFFFFF" FontSize="23" Margin="12,0,0,24" VerticalAlignment="Bottom" Text="{Binding Shell.Settings, Converter={StaticResource DashboardTileTitleConverter}, ConverterParameter=music.feature|Overexposed}"/>
+          <TextBlock Foreground="#DFFFFFFF" FontSize="16" Margin="12,0,0,8" VerticalAlignment="Bottom" Text="{Binding Shell.Settings, Converter={StaticResource DashboardTileSecondaryTitleConverter}, ConverterParameter=music.feature|Maroon 5 - Overexposed}"/>
+        </Grid>
+      </Button>
+      <Button Canvas.Left="694" Canvas.Top="76" Width="158" Height="148" Command="{Binding Shell.LaunchDashboardTileCommand}" CommandParameter="music.recent" Theme="{StaticResource X360TileButtonStyle}">
+        <Grid Background="#FF2F6F9F" ClipToBounds="True">
+          <Image Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding Shell.Settings, Converter={StaticResource DashboardTileImageSourceConverter}, ConverterParameter=music.recent|Assets/Tiles/evanescencerecent.png|256}" RenderOptions.BitmapInterpolationMode="HighQuality"/>
+          <Rectangle Fill="#33000000"/>
+          <TextBlock Foreground="#FFFFFFFF" FontSize="22" Margin="10,0,0,12" VerticalAlignment="Bottom" Text="{Binding Shell.Settings, Converter={StaticResource DashboardTileTitleConverter}, ConverterParameter=music.recent|Recent Music}"/>
+        </Grid>
+      </Button>
+      <Button Canvas.Left="854" Canvas.Top="76" Width="188" Height="148" Command="{Binding Shell.LaunchDashboardTileCommand}" CommandParameter="music.search" Theme="{StaticResource X360TileButtonStyle}">
+        <Grid Background="#FF191919">
+          <TextBlock Text="search" Foreground="#FFFFFFFF" FontSize="23" Margin="10,0,0,12" VerticalAlignment="Bottom"/>
+        </Grid>
+      </Button>
+      <Button Canvas.Left="694" Canvas.Top="226" Width="348" Height="148" Command="{Binding Shell.LaunchDashboardTileCommand}" CommandParameter="music.panchiko" Theme="{StaticResource X360TileButtonStyle}">
+        <Grid Background="#FFE8E8E8" ClipToBounds="True">
+          <Image Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding Shell.Settings, Converter={StaticResource DashboardTileImageSourceConverter}, ConverterParameter=music.panchiko|Assets/Tiles/panchikomusic.jpg|384}"/>
+          <Rectangle Fill="#55FFFFFF"/>
+          <TextBlock Foreground="#FF303030" FontSize="24" Margin="14,0,0,12" VerticalAlignment="Bottom" Text="{Binding Shell.Settings, Converter={StaticResource DashboardTileTitleConverter}, ConverterParameter=music.panchiko|Panchiko}"/>
+        </Grid>
+      </Button>
+    </Canvas>
+  </Grid>
+</UserControl>

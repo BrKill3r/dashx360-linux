@@ -1,0 +1,57 @@
+<Application xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:tabs="using:XboxMetroLauncher.ViewModels.Tabs" xmlns:views="using:XboxMetroLauncher.Views.Tabs" xmlns:converters="using:XboxMetroLauncher.Themes" xmlns:xboxmetrolauncher="using:XboxMetroLauncher" x:Class="XboxMetroLauncher.App" xmlns:w="using:XboxMetroLauncher.Compat" RequestedThemeVariant="Light"><Application.Styles><FluentTheme>
+    <FluentTheme.Palettes>
+      <ColorPaletteResources x:Key="Light" Accent="#FF028D02"/>
+      <ColorPaletteResources x:Key="Dark" Accent="#FF028D02"/>
+    </FluentTheme.Palettes>
+  </FluentTheme><Style Selector="CheckBox /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Foreground" Value="{Binding $parent[CheckBox].Foreground}"/>
+  </Style><Style Selector="RadioButton /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Foreground" Value="{Binding $parent[RadioButton].Foreground}"/>
+  </Style><StyleInclude Source="avares://Avalonia.Controls.ColorPicker/Themes/Fluent/Fluent.xaml"/></Application.Styles>
+  <Application.DataTemplates><DataTemplate DataType="tabs:BingTabViewModel">
+        <views:BingTabView/>
+      </DataTemplate><DataTemplate DataType="tabs:HomeTabViewModel">
+        <views:HomeTabView/>
+      </DataTemplate><DataTemplate DataType="tabs:SocialTabViewModel">
+        <views:SocialTabView/>
+      </DataTemplate><DataTemplate DataType="tabs:GamesTabViewModel">
+        <views:GamesTabView/>
+      </DataTemplate><DataTemplate DataType="tabs:MediaTabViewModel">
+        <views:MediaTabView/>
+      </DataTemplate><DataTemplate DataType="tabs:MusicTabViewModel">
+        <views:MusicTabView/>
+      </DataTemplate><DataTemplate DataType="tabs:AppsTabViewModel">
+        <views:AppsTabView/>
+      </DataTemplate><DataTemplate DataType="tabs:SettingsTabViewModel">
+        <views:SettingsTabView/>
+      </DataTemplate></Application.DataTemplates><Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://DashX360/Xaml/themes/MetroTheme.axaml"/>
+      </ResourceDictionary.MergedDictionaries>
+      <w:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+      <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
+      <converters:StringToImageSourceConverter x:Key="StringToImageSourceConverter"/>
+      <converters:GameCoverStretchConverter x:Key="GameCoverStretchConverter"/>
+      <converters:GameCoverImageSourceConverter x:Key="GameCoverImageSourceConverter"/>
+      <converters:GameCoverBrushConverter x:Key="GameCoverBrushConverter"/>
+      <converters:GameCoverInsetVisibilityConverter x:Key="GameCoverInsetVisibilityConverter"/>
+      <converters:CropImageSourceConverter x:Key="CropImageSourceConverter"/>
+      <converters:DashboardTileImageSourceConverter x:Key="DashboardTileImageSourceConverter"/>
+      <converters:DashboardTileImageBrushConverter x:Key="DashboardTileImageBrushConverter"/>
+      <converters:DashboardTilePreviewImageSourceConverter x:Key="DashboardTilePreviewImageSourceConverter"/>
+      <converters:DashboardTileTitleConverter x:Key="DashboardTileTitleConverter"/>
+      <converters:DashboardTileSecondaryTitleConverter x:Key="DashboardTileSecondaryTitleConverter"/>
+      <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+      <converters:EmptyToVisibilityConverter x:Key="EmptyToVisibilityConverter"/>
+      
+      
+      
+      
+      
+      
+      
+      
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>

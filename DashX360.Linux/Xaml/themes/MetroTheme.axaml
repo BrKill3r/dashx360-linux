@@ -1,0 +1,245 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="using:XboxMetroLauncher.Controls" xmlns:w="using:XboxMetroLauncher.Compat">
+  <Color x:Key="MetroGreenColor">#FF028D02</Color>
+  <Color x:Key="MetroGreenDarkColor">#FF0D5F25</Color>
+  <Color x:Key="MetroTextColor">#FFF7F7F7</Color>
+  <Color x:Key="MetroMutedTextColor">#FFC9D1C9</Color>
+  <Color x:Key="MetroPanelColor">#D916191A</Color>
+  <SolidColorBrush x:Key="MetroGreenBrush" Color="{StaticResource MetroGreenColor}"/>
+  <SolidColorBrush x:Key="MetroGreenDarkBrush" Color="{StaticResource MetroGreenDarkColor}"/>
+  <SolidColorBrush x:Key="MetroTextBrush" Color="{StaticResource MetroTextColor}"/>
+  <SolidColorBrush x:Key="MetroMutedTextBrush" Color="{StaticResource MetroMutedTextColor}"/>
+  <SolidColorBrush x:Key="MetroPanelBrush" Color="{StaticResource MetroPanelColor}"/>
+  <SolidColorBrush x:Key="MetroTileBorderBrush" Color="#55FFFFFF"/>
+  <SolidColorBrush x:Key="MetroTilePressedBrush" Color="#CC0B471E"/>
+  <LinearGradientBrush x:Key="DashboardBackgroundBrush" StartPoint="0%,0%" EndPoint="0%,100%">
+    <GradientStop Color="#FF3C4143" Offset="0"/>
+    <GradientStop Color="#FF666B6D" Offset="0.42"/>
+    <GradientStop Color="#FFC7C9C8" Offset="1"/>
+  </LinearGradientBrush>
+  <LinearGradientBrush x:Key="GlassPanelBrush" StartPoint="0%,0%" EndPoint="0%,100%">
+    <GradientStop Color="#66FFFFFF" Offset="0"/>
+    <GradientStop Color="#14141616" Offset="0.18"/>
+    <GradientStop Color="#77000000" Offset="1"/>
+  </LinearGradientBrush>
+  
+  <ControlTheme x:Key="DashboardTitleText" TargetType="TextBlock">
+    <Setter Property="Foreground" Value="{StaticResource MetroTextBrush}"/>
+    <Setter Property="FontSize" Value="44"/>
+    <Setter Property="FontWeight" Value="Light"/>
+  </ControlTheme>
+  <ControlTheme x:Key="SectionHeaderText" TargetType="TextBlock">
+    <Setter Property="Foreground" Value="{StaticResource MetroTextBrush}"/>
+    <Setter Property="FontSize" Value="23"/>
+    <Setter Property="FontWeight" Value="Light"/>
+    <Setter Property="Margin" Value="0,20,0,12"/>
+  </ControlTheme>
+  <ControlTheme x:Key="MutedText" TargetType="TextBlock">
+    <Setter Property="Foreground" Value="{StaticResource MetroMutedTextBrush}"/>
+    <Setter Property="FontSize" Value="16"/>
+    <Setter Property="TextWrapping" Value="Wrap"/>
+  </ControlTheme>
+  <ControlTheme x:Key="TabButtonStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}"><Setter Property="VerticalAlignment" Value="Stretch"/><Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="Foreground" Value="#55FFFFFF"/>
+    <Setter Property="Background" Value="#00FFFFFF"/>
+    <Setter Property="BorderBrush" Value="#00FFFFFF"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    
+    <Setter Property="Padding" Value="0,0"/>
+    <Setter Property="FontSize" Value="27"/>
+    <Setter Property="FontWeight" Value="Light"/>
+    <Setter Property="Cursor" Value="Hand"/>
+    <Setter Property="MinWidth" Value="0"/>
+    <Setter Property="Height" Value="40"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <Grid Name="TabRoot" Height="{TemplateBinding Height}" RenderTransformOrigin="50%,55%"><w:WpfTriggers.TemplateTriggers><w:TriggerCollection><w:DataTrigger Value="True" Binding="{Binding Shell.UseLightDashboardChrome}">
+              <w:Setter Property="Foreground" Value="#5E3F4548"/>
+            </w:DataTrigger><w:Trigger Property="UIElement.IsKeyboardFocused" Value="True">
+              <w:Setter Property="Foreground" Value="#F2FFFFFF"/>
+              <w:Setter TargetName="SelectedBar" Property="UIElement.Opacity" Value="0.75"/>
+            </w:Trigger><w:Trigger Property="UIElement.IsMouseOver" Value="True">
+              <w:Setter Property="Foreground" Value="#F2FFFFFF"/>
+            </w:Trigger><w:DataTrigger Value="True" Binding="{Binding IsSelected}">
+              <w:DataTrigger.EnterActions>
+                <w:BeginStoryboard>
+                  <w:Storyboard>
+                    <w:DoubleAnimation To="1.025" Duration="0:0:0.18" TargetName="TabRoot" TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                      <w:DoubleAnimation.EasingFunction>
+                        <w:CubicEase EasingMode="EaseOut"/>
+                      </w:DoubleAnimation.EasingFunction>
+                    </w:DoubleAnimation>
+                    <w:DoubleAnimation To="1.025" Duration="0:0:0.18" TargetName="TabRoot" TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                      <w:DoubleAnimation.EasingFunction>
+                        <w:CubicEase EasingMode="EaseOut"/>
+                      </w:DoubleAnimation.EasingFunction>
+                    </w:DoubleAnimation>
+                  </w:Storyboard>
+                </w:BeginStoryboard>
+              </w:DataTrigger.EnterActions>
+              <w:DataTrigger.ExitActions>
+                <w:BeginStoryboard>
+                  <w:Storyboard>
+                    <w:DoubleAnimation To="1" Duration="0:0:0.13" TargetName="TabRoot" TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                      <w:DoubleAnimation.EasingFunction>
+                        <w:SineEase EasingMode="EaseOut"/>
+                      </w:DoubleAnimation.EasingFunction>
+                    </w:DoubleAnimation>
+                    <w:DoubleAnimation To="1" Duration="0:0:0.13" TargetName="TabRoot" TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                      <w:DoubleAnimation.EasingFunction>
+                        <w:SineEase EasingMode="EaseOut"/>
+                      </w:DoubleAnimation.EasingFunction>
+                    </w:DoubleAnimation>
+                  </w:Storyboard>
+                </w:BeginStoryboard>
+              </w:DataTrigger.ExitActions>
+              <w:Setter Property="Foreground" Value="#F2FFFFFF"/>
+              <w:Setter TargetName="SelectedBar" Property="UIElement.Opacity" Value="0"/>
+            </w:DataTrigger><w:MultiDataTrigger>
+              <w:MultiDataTrigger.Conditions>
+                <w:Condition Value="True" Binding="{Binding Shell.UseLightDashboardChrome}"/>
+                <w:Condition Value="True" Binding="{Binding IsSelected}"/>
+              </w:MultiDataTrigger.Conditions>
+              <w:Setter Property="Foreground" Value="#E6404548"/>
+            </w:MultiDataTrigger></w:TriggerCollection></w:WpfTriggers.TemplateTriggers>
+            <Grid.RenderTransform>
+              <ScaleTransform ScaleX="1" ScaleY="1"/>
+            </Grid.RenderTransform>
+            <Border Name="SelectedBar" Height="0" VerticalAlignment="Bottom" Opacity="0" Background="{DynamicResource MetroGreenBrush}"/>
+            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-2,0,0" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Foreground="{TemplateBinding Foreground}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" FontFamily="{TemplateBinding FontFamily}"/>
+          </Grid>
+          
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </ControlTheme>
+  <ControlTheme x:Key="TabGhostTextStyle" TargetType="TextBlock">
+    <Setter Property="Foreground" Value="#FFFFFFFF"/>
+    <Setter Property="FontSize" Value="27"/>
+    <Setter Property="FontWeight" Value="Light"/>
+    <Setter Property="TextAlignment" Value="Center"/>
+    <Setter Property="VerticalAlignment" Value="Top"/>
+    <Setter Property="Margin" Value="0,-2,0,0"/>
+  </ControlTheme>
+  <ControlTheme x:Key="MetroActionButtonStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}"><Setter Property="VerticalAlignment" Value="Stretch"/><Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="Foreground" Value="#FFFFFFFF"/>
+    <Setter Property="Background" Value="{DynamicResource MetroGreenBrush}"/>
+    <Setter Property="BorderBrush" Value="#AAFFFFFF"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    
+    <Setter Property="Padding" Value="20,10"/>
+    <Setter Property="FontSize" Value="17"/>
+    <Setter Property="FontWeight" Value="SemiBold"/>
+    <Setter Property="Cursor" Value="Hand"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <Border Name="Root" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2"><w:WpfTriggers.TemplateTriggers><w:TriggerCollection><w:Trigger Property="UIElement.IsKeyboardFocused" Value="True">
+              <w:Setter TargetName="Root" Property="UIElement.Effect">
+                <w:Setter.Value>
+                  <DropShadowEffect BlurRadius="20" Color="White" Opacity="0.45" OffsetX="0" OffsetY="0"/>
+                </w:Setter.Value>
+              </w:Setter>
+            </w:Trigger><w:Trigger Property="IsPressed" Value="True">
+              <w:Setter Property="Background" Value="{w:DynRes MetroTilePressedBrush}"/>
+            </w:Trigger></w:TriggerCollection></w:WpfTriggers.TemplateTriggers>
+            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Foreground="{TemplateBinding Foreground}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" FontFamily="{TemplateBinding FontFamily}"/>
+          </Border>
+          
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </ControlTheme>
+  <ControlTheme x:Key="MetroTextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}"><Setter Property="VerticalAlignment" Value="Stretch"/><Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="Foreground" Value="#FF1D1D1D"/>
+    <Setter Property="Background" Value="#EEFFFFFF"/>
+    <Setter Property="BorderBrush" Value="#99FFFFFF"/>
+    <Setter Property="BorderThickness" Value="2"/>
+    <Setter Property="FontSize" Value="28"/>
+    <Setter Property="Padding" Value="18,10"/>
+    <Setter Property="CaretBrush" Value="{DynamicResource MetroGreenBrush}"/>
+  </ControlTheme>
+  <ControlTheme x:Key="MetroCheckBoxStyle" TargetType="CheckBox" BasedOn="{StaticResource {x:Type CheckBox}}">
+    <Setter Property="Foreground" Value="{StaticResource MetroTextBrush}"/>
+    <Setter Property="FontSize" Value="18"/>
+    <Setter Property="Margin" Value="0,8"/>
+  </ControlTheme>
+  <ControlTheme x:Key="X360TileButtonStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}"><Setter Property="VerticalAlignment" Value="Stretch"/><Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="Padding" Value="0"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="Background" Value="#00FFFFFF"/>
+    <Setter Property="Foreground" Value="#FFFFFFFF"/>
+    
+    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+    <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+    <Setter Property="ZIndex" Value="0"/>
+    <Setter Property="RenderTransformOrigin" Value="50%,50%"/>
+    <Setter Property="ClipToBounds" Value="False"/>
+    <Setter Property="controls:TileSelectionChrome.IsEnabled" Value="True"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <Grid Name="TileRoot" RenderTransformOrigin="50%,50%" ClipToBounds="False"><w:WpfTriggers.TemplateTriggers><w:TriggerCollection><w:DataTrigger Value="True" Binding="{Binding Path=(controls:TileSelectionChrome.IsActive), RelativeSource={RelativeSource Self}}">
+              <w:DataTrigger.EnterActions>
+                <w:BeginStoryboard>
+                  <w:Storyboard>
+                    <w:DoubleAnimation To="0" Duration="0:0:0.13" TargetName="FocusFrame" TargetProperty="Opacity">
+                      <w:DoubleAnimation.EasingFunction>
+                        <w:SineEase EasingMode="EaseOut"/>
+                      </w:DoubleAnimation.EasingFunction>
+                    </w:DoubleAnimation>
+                    <w:DoubleAnimation To="1.07" Duration="0:0:0.16" TargetName="TileRoot" TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                      <w:DoubleAnimation.EasingFunction>
+                        <w:CubicEase EasingMode="EaseOut"/>
+                      </w:DoubleAnimation.EasingFunction>
+                    </w:DoubleAnimation>
+                    <w:DoubleAnimation To="1.07" Duration="0:0:0.16" TargetName="TileRoot" TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                      <w:DoubleAnimation.EasingFunction>
+                        <w:CubicEase EasingMode="EaseOut"/>
+                      </w:DoubleAnimation.EasingFunction>
+                    </w:DoubleAnimation>
+                  </w:Storyboard>
+                </w:BeginStoryboard>
+              </w:DataTrigger.EnterActions>
+              <w:DataTrigger.ExitActions>
+                <w:BeginStoryboard>
+                  <w:Storyboard>
+                    <w:DoubleAnimation To="0" Duration="0:0:0.10" TargetName="FocusFrame" TargetProperty="Opacity">
+                      <w:DoubleAnimation.EasingFunction>
+                        <w:SineEase EasingMode="EaseIn"/>
+                      </w:DoubleAnimation.EasingFunction>
+                    </w:DoubleAnimation>
+                    <w:DoubleAnimation To="1" Duration="0:0:0.12" TargetName="TileRoot" TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                      <w:DoubleAnimation.EasingFunction>
+                        <w:SineEase EasingMode="EaseOut"/>
+                      </w:DoubleAnimation.EasingFunction>
+                    </w:DoubleAnimation>
+                    <w:DoubleAnimation To="1" Duration="0:0:0.12" TargetName="TileRoot" TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                      <w:DoubleAnimation.EasingFunction>
+                        <w:SineEase EasingMode="EaseOut"/>
+                      </w:DoubleAnimation.EasingFunction>
+                    </w:DoubleAnimation>
+                  </w:Storyboard>
+                </w:BeginStoryboard>
+              </w:DataTrigger.ExitActions>
+              <w:Setter TargetName="TileRoot" Property="UIElement.Effect">
+                <w:Setter.Value>
+                  <DropShadowEffect BlurRadius="18" Color="#CC000000" Opacity="0.42" OffsetX="6.364" OffsetY="6.364"/>
+                </w:Setter.Value>
+              </w:Setter>
+              <w:Setter Property="Panel.ZIndex" Value="100"/>
+            </w:DataTrigger><w:Trigger Property="IsPressed" Value="True">
+              <w:Setter Property="UIElement.Opacity" Value="0.82"/>
+            </w:Trigger></w:TriggerCollection></w:WpfTriggers.TemplateTriggers>
+            <Grid.RenderTransform>
+              <ScaleTransform ScaleX="1" ScaleY="1"/>
+            </Grid.RenderTransform>
+            <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Foreground="{TemplateBinding Foreground}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" FontFamily="{TemplateBinding FontFamily}"/>
+            <Border Name="FocusFrame" BorderBrush="#FFFFFFFF" BorderThickness="2" Opacity="0"/>
+          </Grid>
+          
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </ControlTheme>
+</ResourceDictionary>
